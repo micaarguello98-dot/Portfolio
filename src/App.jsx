@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { 
   Github, 
   Linkedin, 
@@ -14,10 +14,359 @@ import {
   Sun,
   Music,
   ShoppingBag,
-  Building2
+  Building2,
+  X,
+  Lock,
+  User,
+  Link
 } from 'lucide-react';
 
+// ─── Modal Nexus Tienda ────────────────────────────────────────────────
+const NexusModal = ({ onClose }) => {
+  useEffect(() => {
+    const handleKey = (e) => { if (e.key === 'Escape') onClose(); };
+    document.addEventListener('keydown', handleKey);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', handleKey);
+      document.body.style.overflow = '';
+    };
+  }, [onClose]);
+
+  return (
+    <div
+      className="fixed inset-0 z-[9999] flex items-center justify-center p-4"
+      style={{ backgroundColor: 'rgba(0,0,0,0.75)', backdropFilter: 'blur(6px)' }}
+      onClick={onClose}
+    >
+      <div
+        className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl shadow-2xl"
+        style={{
+          background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f1a 100%)',
+          border: '1px solid rgba(139,92,246,0.25)',
+          boxShadow: '0 25px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(139,92,246,0.1)'
+        }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Header */}
+        <div className="flex items-center justify-between px-6 pt-6 pb-4">
+          <div className="flex items-center gap-3">
+            <div className="p-2 rounded-xl" style={{ background: 'rgba(139,92,246,0.2)' }}>
+              <Layout className="w-5 h-5 text-violet-400" />
+            </div>
+            <div>
+              <h2 className="text-xl font-bold text-white tracking-tight">Nexus Tienda</h2>
+              <p className="text-violet-400 text-[10px] uppercase font-bold tracking-widest">Vista previa del proyecto</p>
+            </div>
+          </div>
+          <button
+            onClick={onClose}
+            className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/10 transition-all duration-200 active:scale-95"
+            aria-label="Cerrar"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+
+        {/* Screenshot */}
+        <div className="px-6">
+          <div className="rounded-2xl overflow-hidden" style={{ border: '1px solid rgba(255,255,255,0.08)' }}>
+            <img
+              src="/nexus-login.png"
+              alt="Nexus Tienda - Pantalla de Login"
+              className="w-full object-cover"
+              style={{ display: 'block' }}
+            />
+          </div>
+        </div>
+
+        {/* Demo credentials */}
+        <div className="px-6 pt-5 pb-6">
+          <div
+            className="rounded-2xl p-5 space-y-4"
+            style={{
+              background: 'rgba(255,255,255,0.04)',
+              border: '1px solid rgba(255,255,255,0.08)'
+            }}
+          >
+            <p className="text-slate-300 text-sm font-semibold uppercase tracking-widest" style={{ color: 'rgba(167,139,250,0.9)' }}>
+              Acceso Demo
+            </p>
+            <div className="space-y-3">
+              <div className="flex items-center gap-3">
+                <User className="w-4 h-4 text-violet-400 shrink-0" />
+                <p className="text-slate-300 text-sm">
+                  <span className="text-slate-500 mr-1">Correo:</span>
+                  <span className="font-mono bg-white/5 px-2 py-0.5 rounded-lg text-violet-300">demo@gmail.com</span>
+                </p>
+              </div>
+              <div className="flex items-center gap-3">
+                <Lock className="w-4 h-4 text-violet-400 shrink-0" />
+                <p className="text-slate-300 text-sm">
+                  <span className="text-slate-500 mr-1">Contraseña:</span>
+                  <span className="font-mono bg-white/5 px-2 py-0.5 rounded-lg text-violet-300">demo</span>
+                </p>
+              </div>
+              <div className="flex items-start gap-3">
+                <Link className="w-4 h-4 text-violet-400 shrink-0 mt-0.5" />
+                <p className="text-slate-300 text-sm">
+                  <span className="text-slate-500 mr-1">Link:</span>
+                  <a
+                    href="https://nexustienda.vercel.app/login"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium text-violet-400 hover:text-violet-300 underline underline-offset-2 transition-colors break-all"
+                  >
+                    nexustienda.vercel.app/login
+                  </a>
+                </p>
+              </div>
+            </div>
+
+            <a
+              href="https://nexustienda.vercel.app/login"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 w-full mt-2 py-3 rounded-2xl font-bold text-sm text-white transition-all duration-200 hover:-translate-y-0.5 active:scale-95"
+              style={{
+                background: 'linear-gradient(135deg, #7c3aed, #6d28d9)',
+                boxShadow: '0 4px 20px rgba(124,58,237,0.35)'
+              }}
+            >
+              <ExternalLink className="w-4 h-4" />
+              Ir al demo
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// ─── Modal ANMA Arquitectura ───────────────────────────────────────────────
+const AnmaModal = ({ onClose }) => {
+  useEffect(() => {
+    const handleKey = (e) => { if (e.key === 'Escape') onClose(); };
+    document.addEventListener('keydown', handleKey);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', handleKey);
+      document.body.style.overflow = '';
+    };
+  }, [onClose]);
+
+  return (
+    <div
+      className="fixed inset-0 z-[9999] flex items-center justify-center p-4"
+      style={{ backgroundColor: 'rgba(0,0,0,0.75)', backdropFilter: 'blur(6px)' }}
+      onClick={onClose}
+    >
+      <div
+        className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl shadow-2xl"
+        style={{
+          background: 'linear-gradient(135deg, #0f1f1a 0%, #0d1f18 50%, #0a1410 100%)',
+          border: '1px solid rgba(52,211,153,0.25)',
+          boxShadow: '0 25px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(52,211,153,0.1)'
+        }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Header */}
+        <div className="flex items-center justify-between px-6 pt-6 pb-4">
+          <div className="flex items-center gap-3">
+            <div className="p-2 rounded-xl" style={{ background: 'rgba(52,211,153,0.2)' }}>
+              <Building2 className="w-5 h-5 text-emerald-400" />
+            </div>
+            <div>
+              <h2 className="text-xl font-bold text-white tracking-tight">ANMA Arquitectura</h2>
+              <p className="text-emerald-400 text-[10px] uppercase font-bold tracking-widest">Vista previa del proyecto</p>
+            </div>
+          </div>
+          <button
+            onClick={onClose}
+            className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/10 transition-all duration-200 active:scale-95"
+            aria-label="Cerrar"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+
+        {/* Screenshot */}
+        <div className="px-6">
+          <div className="rounded-2xl overflow-hidden" style={{ border: '1px solid rgba(255,255,255,0.08)' }}>
+            <img
+              src="/anma-preview.png"
+              alt="ANMA Arquitectura - Vista previa"
+              className="w-full object-cover"
+              style={{ display: 'block' }}
+            />
+          </div>
+        </div>
+
+        {/* Info */}
+        <div className="px-6 pt-5 pb-6">
+          <div
+            className="rounded-2xl p-5 space-y-4"
+            style={{
+              background: 'rgba(255,255,255,0.04)',
+              border: '1px solid rgba(255,255,255,0.08)'
+            }}
+          >
+            <div className="flex items-start gap-3">
+              <Link className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+              <p className="text-slate-300 text-sm">
+                <span className="text-slate-500 mr-1">Link:</span>
+                <a
+                  href="https://anma-arquitectura.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-emerald-400 hover:text-emerald-300 underline underline-offset-2 transition-colors break-all"
+                >
+                  anma-arquitectura.vercel.app
+                </a>
+              </p>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <span className="flex items-center gap-2 px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-wider animate-pulse"
+                style={{ background: 'rgba(245,158,11,0.15)', color: '#fbbf24', border: '1px solid rgba(245,158,11,0.3)' }}>
+                <span className="w-2 h-2 rounded-full bg-amber-400"></span>
+                En proceso
+              </span>
+            </div>
+
+            <a
+              href="https://anma-arquitectura.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 w-full mt-2 py-3 rounded-2xl font-bold text-sm text-white transition-all duration-200 hover:-translate-y-0.5 active:scale-95"
+              style={{
+                background: 'linear-gradient(135deg, #059669, #047857)',
+                boxShadow: '0 4px 20px rgba(5,150,105,0.35)'
+              }}
+            >
+              <ExternalLink className="w-4 h-4" />
+              Ver avances
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// ─── Modal Tienda Emma ───────────────────────────────────────────────
+const EmmaModal = ({ onClose }) => {
+  useEffect(() => {
+    const handleKey = (e) => { if (e.key === 'Escape') onClose(); };
+    document.addEventListener('keydown', handleKey);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', handleKey);
+      document.body.style.overflow = '';
+    };
+  }, [onClose]);
+
+  return (
+    <div
+      className="fixed inset-0 z-[9999] flex items-center justify-center p-4"
+      style={{ backgroundColor: 'rgba(0,0,0,0.75)', backdropFilter: 'blur(6px)' }}
+      onClick={onClose}
+    >
+      <div
+        className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl shadow-2xl"
+        style={{
+          background: 'linear-gradient(135deg, #1f0f18 0%, #1f0d16 50%, #140a10 100%)',
+          border: '1px solid rgba(236,72,153,0.25)',
+          boxShadow: '0 25px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(236,72,153,0.1)'
+        }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Header */}
+        <div className="flex items-center justify-between px-6 pt-6 pb-4">
+          <div className="flex items-center gap-3">
+            <div className="p-2 rounded-xl" style={{ background: 'rgba(236,72,153,0.2)' }}>
+              <ShoppingBag className="w-5 h-5 text-pink-400" />
+            </div>
+            <div>
+              <h2 className="text-xl font-bold text-white tracking-tight">Tienda Emma</h2>
+              <p className="text-pink-400 text-[10px] uppercase font-bold tracking-widest">Vista previa del proyecto</p>
+            </div>
+          </div>
+          <button
+            onClick={onClose}
+            className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/10 transition-all duration-200 active:scale-95"
+            aria-label="Cerrar"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+
+        {/* Screenshot */}
+        <div className="px-6">
+          <div className="rounded-2xl overflow-hidden" style={{ border: '1px solid rgba(255,255,255,0.08)' }}>
+            <img
+              src="/emma-preview.png"
+              alt="Tienda Emma - Vista previa"
+              className="w-full object-cover"
+              style={{ display: 'block' }}
+            />
+          </div>
+        </div>
+
+        {/* Info */}
+        <div className="px-6 pt-5 pb-6">
+          <div
+            className="rounded-2xl p-5 space-y-4"
+            style={{
+              background: 'rgba(255,255,255,0.04)',
+              border: '1px solid rgba(255,255,255,0.08)'
+            }}
+          >
+            <div className="flex items-start gap-3">
+              <Link className="w-4 h-4 text-pink-400 shrink-0 mt-0.5" />
+              <p className="text-slate-300 text-sm">
+                <span className="text-slate-500 mr-1">Link:</span>
+                <a
+                  href="https://tienda-emma2.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-pink-400 hover:text-pink-300 underline underline-offset-2 transition-colors break-all"
+                >
+                  tienda-emma2.vercel.app
+                </a>
+              </p>
+            </div>
+
+            <a
+              href="https://tienda-emma2.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 w-full py-3 rounded-2xl font-bold text-sm text-white transition-all duration-200 hover:-translate-y-0.5 active:scale-95"
+              style={{
+                background: 'linear-gradient(135deg, #ec4899, #db2777)',
+                boxShadow: '0 4px 20px rgba(236,72,153,0.35)'
+              }}
+            >
+              <ExternalLink className="w-4 h-4" />
+              Visitar tienda
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const BentoGrid = () => {
+  const [nexusModalOpen, setNexusModalOpen] = useState(false);
+  const openNexusModal = useCallback(() => setNexusModalOpen(true), []);
+  const closeNexusModal = useCallback(() => setNexusModalOpen(false), []);
+  const [anmaModalOpen, setAnmaModalOpen] = useState(false);
+  const openAnmaModal = useCallback(() => setAnmaModalOpen(true), []);
+  const closeAnmaModal = useCallback(() => setAnmaModalOpen(false), []);
+  const [emmaModalOpen, setEmmaModalOpen] = useState(false);
+  const openEmmaModal = useCallback(() => setEmmaModalOpen(true), []);
+  const closeEmmaModal = useCallback(() => setEmmaModalOpen(false), []);
   const [isDarkMode, setIsDarkMode] = useState(() => {
     // Verificar si hay una preferencia guardada o si el sistema prefiere oscurom
     if (typeof window !== 'undefined') {
@@ -174,7 +523,10 @@ const BentoGrid = () => {
           </div>
           <div className="mt-auto pt-8 border-t border-slate-100 dark:border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <span className="text-sm font-medium text-slate-400 italic">Diseño UI & Arquitectura Frontend</span>
-            <button className="flex items-center justify-center gap-2 w-full sm:w-auto text-sm font-bold bg-violet-600 text-white px-6 py-2.5 rounded-2xl hover:bg-violet-700 transition-all shadow-lg shadow-violet-600/20 active:scale-95">
+            <button
+              onClick={openNexusModal}
+              className="flex items-center justify-center gap-2 w-full sm:w-auto text-sm font-bold bg-violet-600 text-white px-6 py-2.5 rounded-2xl hover:bg-violet-700 transition-all shadow-lg shadow-violet-600/20 active:scale-95"
+            >
               Ver detalles <ExternalLink className="w-4 h-4" />
             </button>
           </div>
@@ -200,7 +552,10 @@ const BentoGrid = () => {
           </div>
           <div className="mt-auto pt-8 border-t border-slate-100 dark:border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <span className="text-sm font-medium text-slate-400 italic">Identidad Web Estructural</span>
-            <button className="flex items-center justify-center gap-2 w-full sm:w-auto text-sm font-bold bg-emerald-600 text-white px-6 py-2.5 rounded-2xl hover:bg-emerald-700 transition-all shadow-lg shadow-emerald-600/20 active:scale-95">
+            <button
+              onClick={openAnmaModal}
+              className="flex items-center justify-center gap-2 w-full sm:w-auto text-sm font-bold bg-emerald-600 text-white px-6 py-2.5 rounded-2xl hover:bg-emerald-700 transition-all shadow-lg shadow-emerald-600/20 active:scale-95"
+            >
               Ver detalles <ExternalLink className="w-4 h-4" />
             </button>
           </div>
@@ -226,7 +581,10 @@ const BentoGrid = () => {
           </div>
           <div className="mt-auto pt-8 border-t border-slate-100 dark:border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <span className="text-sm font-medium text-slate-400 italic">E-commerce Experience</span>
-            <button className="flex items-center justify-center gap-2 w-full sm:w-auto text-sm font-bold bg-pink-500 text-white px-6 py-2.5 rounded-2xl hover:bg-pink-600 transition-all shadow-lg shadow-pink-500/20 active:scale-95">
+            <button
+              onClick={openEmmaModal}
+              className="flex items-center justify-center gap-2 w-full sm:w-auto text-sm font-bold bg-pink-500 text-white px-6 py-2.5 rounded-2xl hover:bg-pink-600 transition-all shadow-lg shadow-pink-500/20 active:scale-95"
+            >
               Ver detalles <ExternalLink className="w-4 h-4" />
             </button>
           </div>
@@ -259,6 +617,13 @@ const BentoGrid = () => {
         </div>
 
       </div>
+
+      {/* Modal Nexus Tienda */}
+      {nexusModalOpen && <NexusModal onClose={closeNexusModal} />}
+      {/* Modal ANMA Arquitectura */}
+      {anmaModalOpen && <AnmaModal onClose={closeAnmaModal} />}
+      {/* Modal Tienda Emma */}
+      {emmaModalOpen && <EmmaModal onClose={closeEmmaModal} />}
       
       {/* Footer minimalista */}
       <footer className="mt-16 text-center text-slate-400 dark:text-slate-600 text-sm">
