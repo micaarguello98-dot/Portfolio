@@ -72,7 +72,7 @@ const NexusModal = ({ onClose }) => {
         <div className="px-6">
           <div className="rounded-2xl overflow-hidden" style={{ border: '1px solid rgba(255,255,255,0.08)' }}>
             <img
-              src="/nexus-login.png"
+              src={`${import.meta.env.BASE_URL}nexus-login.png`}
               alt="Nexus Tienda - Pantalla de Login"
               className="w-full object-cover"
               style={{ display: 'block' }}
@@ -194,7 +194,7 @@ const AnmaModal = ({ onClose }) => {
         <div className="px-6">
           <div className="rounded-2xl overflow-hidden" style={{ border: '1px solid rgba(255,255,255,0.08)' }}>
             <img
-              src="/anma-preview.png"
+              src={`${import.meta.env.BASE_URL}anma-preview.png`}
               alt="ANMA Arquitectura - Vista previa"
               className="w-full object-cover"
               style={{ display: 'block' }}
@@ -305,7 +305,7 @@ const EmmaModal = ({ onClose }) => {
         <div className="px-6">
           <div className="rounded-2xl overflow-hidden" style={{ border: '1px solid rgba(255,255,255,0.08)' }}>
             <img
-              src="/emma-preview.png"
+              src={`${import.meta.env.BASE_URL}emma-preview.png`}
               alt="Tienda Emma - Vista previa"
               className="w-full object-cover"
               style={{ display: 'block' }}
@@ -433,7 +433,7 @@ const BentoGrid = () => {
             <div className="absolute -inset-1 bg-gradient-to-r from-violet-600 to-purple-600 rounded-full blur opacity-25 transition duration-1000"></div>
             <div className="relative w-40 h-40 lg:w-52 lg:h-52 rounded-full border-4 border-white dark:border-slate-800 overflow-hidden shadow-2xl bg-slate-200 dark:bg-slate-800 transition-all duration-500 hover:scale-105">
               <img 
-                src="/Perfilnuevo.png" 
+                src={`${import.meta.env.BASE_URL}Perfilnuevo.png`}
                 alt="Micaela Argüello"
                 className="w-full h-full object-cover"
               />
