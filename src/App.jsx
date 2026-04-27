@@ -18,7 +18,11 @@ import {
   X,
   Lock,
   User,
-  Link
+  Link,
+  GraduationCap,
+  BookOpen,
+  Download,
+  FileText
 } from 'lucide-react';
 
 // ─── Modal Nexus Tienda ────────────────────────────────────────────────
@@ -446,7 +450,7 @@ const BentoGrid = () => {
           <h3 className="text-lg font-bold mb-4 flex items-center gap-2 text-slate-900 dark:text-slate-100">
             <Code2 className="w-5 h-5 text-violet-600 dark:text-violet-400" /> Habilidades
           </h3>
-          <div className="flex flex-wrap gap-2 mt-auto">
+          <div className="flex flex-wrap gap-2 mt-4">
             {skills.map((skill) => (
               <span 
                 key={skill.name}
@@ -465,7 +469,7 @@ const BentoGrid = () => {
           <p className="text-violet-200 text-sm mb-6">
             Actualmente buscando nuevas oportunidades. Ya sea para un proyecto web, testing o simplemente para saludar, ¡mi bandeja de entrada está abierta!
           </p>
-          <div className="space-y-3 mt-auto">
+          <div className="space-y-3 mt-4">
             <a 
               href="mailto:micaela.arg13@gmail.com" 
               className="flex items-center gap-3 p-3 rounded-2xl bg-white/10 backdrop-blur-md border border-white/10 hover:bg-white/20 hover:-translate-y-1 transition-all duration-300 group overflow-hidden"
@@ -500,7 +504,7 @@ const BentoGrid = () => {
         </div>
 
         {/* Proyecto 1: Nexus Tienda */}
-        <div className="md:col-span-2 lg:col-span-2 bento-card relative overflow-hidden group">
+        <div className="md:col-span-2 lg:col-span-2 bento-card border-l-4 border-l-violet-600 dark:border-l-violet-400 bg-gradient-to-br from-white to-violet-50/30 dark:from-slate-900 dark:to-violet-900/5 relative overflow-hidden group">
           <div className="absolute top-0 right-0 p-6 opacity-10 dark:opacity-5 group-hover:opacity-20 transition-opacity">
             <Layout className="w-32 h-32 rotate-12 text-slate-900 dark:text-slate-100" />
           </div>
@@ -601,7 +605,7 @@ const BentoGrid = () => {
                 <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100">Producción Musical</h3>
               </div>
               <p className="text-slate-500 dark:text-slate-400 leading-relaxed text-sm">
-                Explorando la intersección entre tecnología y composición sonora. Portafolio en fase de curaduría.
+                En esta sección comparto los proyectos que dan vida a mi faceta musical, desde la idea y la composición hasta la producción y la puesta en escena.
               </p>
               <div className="flex pt-2">
                 <span className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 text-[10px] font-bold uppercase tracking-wider animate-pulse">
@@ -612,6 +616,93 @@ const BentoGrid = () => {
             </div>
             <div className="w-full h-24 rounded-2xl bg-slate-100 dark:bg-slate-800/50 flex flex-col items-center justify-center border border-dashed border-slate-300 dark:border-slate-700 group-hover:border-purple-400/50 transition-colors">
               <span className="text-slate-400 dark:text-slate-500 font-medium italic text-[10px] text-center px-4 uppercase tracking-tighter">Próximamente SoundCloud</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Educación y Formación */}
+        <div className="md:col-span-3 lg:col-span-4 bento-card bg-gradient-to-br from-white to-indigo-50/30 dark:from-slate-900 dark:to-indigo-900/5 border-l-4 border-l-indigo-600 dark:border-l-indigo-400">
+          <div className="space-y-6">
+            <div className="flex items-center gap-3">
+              <div className="p-2 rounded-xl bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400">
+                <GraduationCap className="w-5 h-5" />
+              </div>
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100">Educación y Formación</h3>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-4">
+                <div className="relative pl-6 border-l border-slate-200 dark:border-slate-800">
+                  <div className="absolute left-[-5px] top-1.5 w-2.5 h-2.5 rounded-full bg-indigo-600 dark:bg-indigo-400"></div>
+                  <h4 className="font-bold text-slate-800 dark:text-slate-200">Lic. en Música y Tecnología</h4>
+                  <p className="text-indigo-600 dark:text-indigo-400 text-sm font-medium">Universidad Nacional de Quilmes | 2017 - En curso</p>
+                </div>
+
+                <div className="relative pl-6 border-l border-slate-200 dark:border-slate-800">
+                  <div className="absolute left-[-5px] top-1.5 w-2.5 h-2.5 rounded-full bg-indigo-600 dark:bg-indigo-400"></div>
+                  <h4 className="font-bold text-slate-800 dark:text-slate-200">Iniciación en Programación con Python</h4>
+                  <p className="text-indigo-600 dark:text-indigo-400 text-sm font-medium">Talento Tech | (En curso)</p>
+                </div>
+                
+                <div className="relative pl-6 border-l border-slate-200 dark:border-slate-800">
+                  <div className="absolute left-[-5px] top-1.5 w-2.5 h-2.5 rounded-full bg-slate-400 dark:bg-slate-600"></div>
+                  <h4 className="font-bold text-slate-800 dark:text-slate-200">Curso de Testing Manual</h4>
+                  <p className="text-slate-500 dark:text-slate-400 text-sm font-medium">Fp16 | 2025</p>
+                </div>
+
+                <div className="relative pl-6 border-l border-slate-200 dark:border-slate-800">
+                  <div className="absolute left-[-5px] top-1.5 w-2.5 h-2.5 rounded-full bg-slate-400 dark:bg-slate-600"></div>
+                  <h4 className="font-bold text-slate-800 dark:text-slate-200">Técnica en Producción Musical</h4>
+                  <p className="text-slate-500 dark:text-slate-400 text-sm font-medium">Universidad Nacional de Quilmes | Graduada 2023</p>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="p-1.5 rounded-lg bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400">
+                    <BookOpen className="w-4 h-4" />
+                  </div>
+                  <h4 className="font-bold text-slate-800 dark:text-slate-200 text-sm uppercase tracking-widest">Idiomas</h4>
+                </div>
+                
+                <div className="relative p-5 rounded-3xl bg-gradient-to-br from-indigo-50/50 to-white dark:from-indigo-900/10 dark:to-slate-900/50 border border-indigo-100/50 dark:border-indigo-900/20 overflow-hidden group">
+                  <div className="absolute top-0 right-0 -mr-4 -mt-4 w-24 h-24 bg-indigo-500/5 rounded-full blur-2xl group-hover:bg-indigo-500/10 transition-colors"></div>
+                  
+                  <div className="relative z-10">
+                    <div className="flex items-center justify-between mb-4">
+                      <div>
+                        <span className="text-lg font-bold text-slate-800 dark:text-slate-100">Inglés</span>
+                        <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">CUI-UBA (2023)</p>
+                      </div>
+                      <span className="px-3 py-1 rounded-full bg-indigo-600 text-white text-[10px] font-bold uppercase tracking-wider shadow-lg shadow-indigo-600/20">
+                        B1 Intermedio
+                      </span>
+                    </div>
+                    
+                    <div className="space-y-3">
+                      <div className="space-y-1.5">
+                        <div className="flex justify-between text-[10px] font-bold uppercase tracking-tighter text-slate-400 dark:text-slate-500">
+                          <span>Comprensión & Lectura</span>
+                          <span>75%</span>
+                        </div>
+                        <div className="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                          <div className="w-[75%] h-full bg-indigo-500 rounded-full shadow-[0_0_8px_rgba(99,102,241,0.5)]"></div>
+                        </div>
+                      </div>
+                      
+                      <div className="space-y-1.5">
+                        <div className="flex justify-between text-[10px] font-bold uppercase tracking-tighter text-slate-400 dark:text-slate-500">
+                          <span>Redacción</span>
+                          <span>65%</span>
+                        </div>
+                        <div className="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                          <div className="w-[65%] h-full bg-indigo-400 rounded-full opacity-80"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -629,6 +720,21 @@ const BentoGrid = () => {
       <footer className="mt-16 text-center text-slate-400 dark:text-slate-600 text-sm">
         <p>&copy; {new Date().getFullYear()} Micaela Argüello. Diseñado con ❤️ y precisión.</p>
       </footer>
+
+      {/* Botón Flotante CV */}
+      <div className="fixed bottom-6 right-6 z-50">
+        <a 
+          href={`${import.meta.env.BASE_URL}Micaela Argüellotec.pdf`} 
+          download="CV_Micaela_Arguello.pdf"
+          className="group relative flex items-center justify-center w-14 h-14 bg-violet-600 text-white rounded-2xl shadow-2xl shadow-violet-600/40 hover:scale-110 hover:bg-violet-700 active:scale-95 transition-all duration-300 opacity-70 md:opacity-100 backdrop-blur-sm md:backdrop-blur-none"
+          title="Descargar CV"
+        >
+          <FileText className="w-6 h-6" />
+          <div className="absolute right-full mr-4 px-3 py-1.5 rounded-xl bg-slate-900 dark:bg-slate-800 text-white text-[10px] font-bold uppercase tracking-widest whitespace-nowrap opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-2 group-hover:translate-x-0 pointer-events-none shadow-xl border border-white/10">
+            Descargar CV
+          </div>
+        </a>
+      </div>
     </div>
   );
 };
