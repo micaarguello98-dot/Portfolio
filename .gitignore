@@ -23,9 +23,3 @@ dist-ssr/
 
 # Vite
 .vite
-
-# Public assets (icons and documents)
-public/*.png
-public/*.jpg
-public/*.pdf
-public/*.lnk
