@@ -724,7 +724,7 @@ const BentoGrid = () => {
       {/* Botón Flotante CV */}
       <div className="fixed bottom-6 right-6 z-50">
         <a 
-          href={`${import.meta.env.BASE_URL}CV_Micaela%20Arg%C3%BCello.pdf`} 
+          href={`${import.meta.env.BASE_URL}CV_Micaela_Arguello.pdf`} 
           target="_blank"
           rel="noopener noreferrer"
           download="CV_Micaela Argüello.pdf"
