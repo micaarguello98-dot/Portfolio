@@ -445,63 +445,71 @@ const BentoGrid = () => {
           </div>
         </div>
 
-        {/* Caja de Habilidades */}
-        <div className="md:col-span-1 lg:col-span-1 bento-card">
-          <h3 className="text-lg font-bold mb-4 flex items-center gap-2 text-slate-900 dark:text-slate-100">
-            <Code2 className="w-5 h-5 text-violet-600 dark:text-violet-400" /> Habilidades
-          </h3>
-          <div className="flex flex-wrap gap-2 mt-4">
-            {skills.map((skill) => (
-              <span 
-                key={skill.name}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-violet-50 dark:bg-violet-900/10 text-violet-700 dark:text-violet-300 border border-violet-200 dark:border-violet-900/30 text-sm font-medium hover:bg-violet-100 dark:hover:bg-violet-900/20 transition-colors cursor-default"
-              >
-                {skill.icon}
-                {skill.name}
-              </span>
-            ))}
-          </div>
-        </div>
+        {/* Columna derecha: Habilidades + Conectemos apilados */}
+        <div className="md:col-span-1 lg:col-span-2 flex flex-col gap-6">
 
-        {/* Contacto / Social */}
-        <div className="md:col-span-1 lg:col-span-1 bento-card bg-gradient-to-br from-violet-900 to-violet-950 text-white border-none shadow-xl shadow-violet-900/20">
-          <h3 className="text-lg font-bold mb-2">Conectemos</h3>
-          <p className="text-violet-200 text-sm mb-6">
-            Actualmente buscando nuevas oportunidades. Ya sea para un proyecto web, testing o simplemente para saludar, ¡mi bandeja de entrada está abierta!
-          </p>
-          <div className="space-y-3 mt-4">
-            <a 
-              href="mailto:micaela.arg13@gmail.com" 
-              className="flex items-center gap-3 p-3 rounded-2xl bg-white/10 backdrop-blur-md border border-white/10 hover:bg-white/20 hover:-translate-y-1 transition-all duration-300 group overflow-hidden"
-            >
-              <div className="p-2.5 rounded-xl bg-violet-600 group-hover:bg-violet-500 transition-colors shrink-0 shadow-lg shadow-violet-900/40">
-                <Mail className="w-4 h-4" />
-              </div>
-              <span className="text-[12px] sm:text-sm font-medium break-all tracking-tight">micaela.arg13@gmail.com</span>
-            </a>
-            
-            <div className="grid grid-cols-2 gap-3">
-              <a 
-                href="https://github.com/micaarguello98-dot" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 p-3 rounded-2xl bg-white/10 border border-white/5 hover:bg-white/20 hover:-translate-y-1 transition-all duration-300"
-              >
-                <Github className="w-5 h-5" />
-                <span className="text-xs uppercase font-bold tracking-widest">GitHub</span>
-              </a>
-              <a 
-                href="https://www.linkedin.com/in/micaela-arg%C3%BCello" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 p-3 rounded-2xl bg-white/10 border border-white/5 hover:bg-white/20 hover:-translate-y-1 transition-all duration-300"
-              >
-                <Linkedin className="w-5 h-5" />
-                <span className="text-xs uppercase font-bold tracking-widest">LinkedIn</span>
-              </a>
+          {/* Habilidades — altura natural */}
+          <div className="bento-card">
+            <h3 className="text-base font-bold mb-4 flex items-center gap-2 text-slate-900 dark:text-slate-100">
+              <Code2 className="w-4 h-4 text-violet-600 dark:text-violet-400" /> Habilidades
+            </h3>
+            <div className="flex flex-wrap gap-2">
+              {skills.map((skill) => (
+                <span
+                  key={skill.name}
+                  className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-violet-50 dark:bg-violet-900/10 text-violet-700 dark:text-violet-300 border border-violet-200 dark:border-violet-900/30 text-xs font-medium hover:bg-violet-100 dark:hover:bg-violet-900/20 transition-colors cursor-default"
+                >
+                  {skill.icon}
+                  {skill.name}
+                </span>
+              ))}
             </div>
           </div>
+
+          {/* Conectemos — ocupa el espacio restante */}
+          <div className="bento-card flex-1 flex flex-col justify-between bg-gradient-to-br from-violet-900 to-violet-950 text-white border-none shadow-xl shadow-violet-900/20">
+            <div>
+              <h3 className="text-base font-bold mb-1">Conectemos</h3>
+              <p className="text-violet-200 text-xs leading-relaxed">
+                Actualmente buscando nuevas oportunidades. Ya sea para un proyecto web, testing o simplemente para saludar, ¡mi bandeja está abierta!
+              </p>
+            </div>
+            <div className="space-y-2 mt-4">
+              <a
+                href="mailto:micaela.arg13@gmail.com"
+                className="flex items-center gap-3 p-3 rounded-2xl bg-white/10 border border-white/10 hover:bg-white/20 hover:-translate-y-0.5 transition-all duration-300 group"
+              >
+                <div className="p-2 rounded-xl bg-violet-600 group-hover:bg-violet-500 transition-colors shrink-0">
+                  <Mail className="w-3.5 h-3.5" />
+                </div>
+                <span className="text-xs font-medium truncate">micaela.arg13@gmail.com</span>
+              </a>
+              <div className="grid grid-cols-2 gap-2">
+                <a
+                  href="https://github.com/micaarguello98-dot"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 p-3 rounded-2xl bg-white/10 border border-white/5 hover:bg-white/20 hover:-translate-y-0.5 transition-all duration-300"
+                >
+                  <Github className="w-4 h-4" />
+                  <span className="text-[10px] uppercase font-bold tracking-widest">GitHub</span>
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/micaela-arg%C3%BCello"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 p-3 rounded-2xl bg-white/10 border border-white/5 hover:bg-white/20 hover:-translate-y-0.5 transition-all duration-300"
+                >
+                  <Linkedin className="w-4 h-4" />
+                  <span className="text-[10px] uppercase font-bold tracking-widest">LinkedIn</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
         </div>
+
+
 
         {/* Proyecto 1: Nexus Tienda */}
         <div className="md:col-span-2 lg:col-span-2 bento-card border-l-4 border-l-violet-600 dark:border-l-violet-400 bg-gradient-to-br from-white to-violet-50/30 dark:from-slate-900 dark:to-violet-900/5 relative overflow-hidden group">
@@ -536,37 +544,9 @@ const BentoGrid = () => {
           </div>
         </div>
 
-        {/* Proyecto 2: ANMA Arquitectura */}
-        <div className="md:col-span-2 lg:col-span-2 bento-card border-l-4 border-l-emerald-600 dark:border-l-emerald-400 bg-gradient-to-br from-white to-emerald-50/30 dark:from-slate-900 dark:to-emerald-900/5">
-          <div className="space-y-4">
-            <div className="flex items-center justify-between">
-              <div className="p-2 rounded-xl bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400">
-                <Building2 className="w-5 h-5" />
-              </div>
-            </div>
-            <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100">ANMA Arquitectura</h3>
-            <p className="text-emerald-600 dark:text-emerald-400 font-bold text-[10px] uppercase tracking-widest">Estudio de Arquitectura</p>
-            <p className="text-slate-500 dark:text-slate-400 leading-relaxed text-sm">
-              Portfolio digital para un estudio de arquitectura. Un diseño minimalista y equilibrado que resalta la fotografía de obra y la filosofía espacial del estudio mediante una navegación elegante.
-            </p>
-            <div className="flex gap-2 pt-2">
-              <span className="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-500 text-[10px] font-bold rounded">Next.js</span>
-              <span className="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-500 text-[10px] font-bold rounded">Framer Motion</span>
-            </div>
-          </div>
-          <div className="mt-auto pt-8 border-t border-slate-100 dark:border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <span className="text-sm font-medium text-slate-400 italic">Identidad Web Estructural</span>
-            <button
-              onClick={openAnmaModal}
-              className="flex items-center justify-center gap-2 w-full sm:w-auto text-sm font-bold bg-emerald-600 text-white px-6 py-2.5 rounded-2xl hover:bg-emerald-700 transition-all shadow-lg shadow-emerald-600/20 active:scale-95"
-            >
-              Ver detalles <ExternalLink className="w-4 h-4" />
-            </button>
-          </div>
-        </div>
 
-        {/* Proyecto 3: Tienda Emma */}
-        <div className="md:col-span-1 lg:col-span-2 bento-card border-l-4 border-l-pink-500 dark:border-l-pink-400 bg-gradient-to-br from-white to-pink-50/30 dark:from-slate-900 dark:to-pink-900/5">
+        {/* Proyecto 2: Tienda Emma */}
+        <div className="md:col-span-2 lg:col-span-2 bento-card border-l-4 border-l-pink-500 dark:border-l-pink-400 bg-gradient-to-br from-white to-pink-50/30 dark:from-slate-900 dark:to-pink-900/5">
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <div className="p-2 rounded-xl bg-pink-100 dark:bg-pink-900/30 text-pink-600 dark:text-pink-400">
@@ -594,28 +574,97 @@ const BentoGrid = () => {
           </div>
         </div>
 
-        {/* Proyecto 4: Producción Musical */}
-        <div className="md:col-span-3 lg:col-span-2 bento-card border-l-4 border-l-purple-600 dark:border-l-purple-400 bg-gradient-to-br from-white to-purple-50/50 dark:from-slate-900 dark:to-slate-900/50">
-          <div className="flex flex-col gap-6">
-            <div className="space-y-4 text-left">
-              <div className="flex items-center gap-3">
-                <div className="p-3 rounded-2xl bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400">
-                  <Music className="w-6 h-6" />
+        {/* Proyecto 3: Producción Musical */}
+        <div className="md:col-span-3 lg:col-span-4 bento-card border-l-4 border-l-purple-600 dark:border-l-purple-400 bg-gradient-to-br from-white to-purple-50/50 dark:from-slate-900 dark:to-slate-900/50 overflow-hidden">
+          <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
+
+            {/* Panel Izquierdo — Identidad */}
+            <div className="flex flex-col justify-between gap-6 lg:flex-1">
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="p-3 rounded-2xl bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400">
+                    <Music className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100 leading-tight">Producción Musical</h3>
+                  </div>
                 </div>
-                <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100">Producción Musical</h3>
+                <p className="text-slate-500 dark:text-slate-400 leading-relaxed text-sm">
+                  En esta sección comparto los proyectos que dan vida a mi faceta musical, desde la idea y la composición hasta la producción y la puesta en escena.
+                </p>
               </div>
-              <p className="text-slate-500 dark:text-slate-400 leading-relaxed text-sm">
-                En esta sección comparto los proyectos que dan vida a mi faceta musical, desde la idea y la composición hasta la producción y la puesta en escena.
-              </p>
-              <div className="flex pt-2">
-                <span className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 text-[10px] font-bold uppercase tracking-wider animate-pulse">
-                  <span className="w-2 h-2 rounded-full bg-amber-500"></span>
-                  En proceso
-                </span>
+
+              {/* Visualizador decorativo de onda */}
+              <div className="flex items-end gap-1 h-14 px-2">
+                {[3,6,9,5,12,8,4,10,7,5,11,6,3,9,7,4,8,5,10,6,4,7,9,5,3].map((h, i) => (
+                  <div
+                    key={i}
+                    className="flex-1 rounded-full bg-gradient-to-t from-purple-600 to-purple-300 dark:from-purple-500 dark:to-purple-800 opacity-70"
+                    style={{ height: `${h * 4}px`, animationDelay: `${i * 60}ms` }}
+                  />
+                ))}
+              </div>
+
+              {/* SoundCloud placeholder */}
+              <div className="flex items-center gap-3 px-4 py-3 rounded-2xl bg-slate-100 dark:bg-slate-800/50 border border-dashed border-slate-300 dark:border-slate-700 group hover:border-purple-300 dark:hover:border-purple-700/50 hover:bg-purple-50/50 dark:hover:bg-purple-900/10 transition-all duration-500 cursor-default">
+                <div className="p-2 rounded-xl bg-slate-200 dark:bg-slate-700/50 group-hover:bg-purple-100 dark:group-hover:bg-purple-900/30 transition-colors duration-500">
+                  <Music className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-500" />
+                </div>
+                <div>
+                  <p className="text-slate-400 dark:text-slate-500 font-bold text-[10px] uppercase tracking-widest group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-500">SoundCloud</p>
+                  <p className="text-slate-300 dark:text-slate-600 text-[9px] italic group-hover:text-purple-400 dark:group-hover:text-purple-500 transition-colors duration-500">Próximamente disponible</p>
+                </div>
               </div>
             </div>
-            <div className="w-full h-24 rounded-2xl bg-slate-100 dark:bg-slate-800/50 flex flex-col items-center justify-center border border-dashed border-slate-300 dark:border-slate-700 group-hover:border-purple-400/50 transition-colors">
-              <span className="text-slate-400 dark:text-slate-500 font-medium italic text-[10px] text-center px-4 uppercase tracking-tighter">Próximamente SoundCloud</span>
+
+            {/* Divisor vertical */}
+            <div className="hidden lg:block w-px bg-gradient-to-b from-transparent via-purple-200 dark:via-purple-800/40 to-transparent self-stretch" />
+
+            {/* Panel Derecho — Contenido interactivo */}
+            <div className="flex flex-col gap-5 lg:flex-1">
+              <div className="flex items-center gap-2">
+                <div className="p-1.5 rounded-lg bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400">
+                  <Music className="w-3.5 h-3.5" />
+                </div>
+                <h4 className="font-bold text-slate-800 dark:text-slate-200 text-sm uppercase tracking-widest">Entrevistas</h4>
+                <span className="ml-auto text-[10px] text-slate-400 dark:text-slate-500 font-medium">Sonido directo · Mix y Master</span>
+              </div>
+
+              {/* Card de entrevista */}
+              <a
+                href="https://www.youtube.com/watch?v=8OrNqeL2-1M"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group/link flex items-center gap-4 p-4 rounded-2xl bg-white dark:bg-slate-800/60 border border-purple-100 dark:border-purple-900/30 hover:border-purple-400 dark:hover:border-purple-600 hover:shadow-lg hover:shadow-purple-500/10 hover:-translate-y-1 transition-all duration-300"
+              >
+                {/* Miniatura YT */}
+                <div className="relative shrink-0 w-20 h-14 rounded-xl overflow-hidden bg-slate-200 dark:bg-slate-700">
+                  <img
+                    src="https://img.youtube.com/vi/8OrNqeL2-1M/mqdefault.jpg"
+                    alt="Gauchos of the Pampa"
+                    className="w-full h-full object-cover group-hover/link:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover/link:bg-black/10 transition-colors">
+                    <div className="w-7 h-7 rounded-full bg-red-500 flex items-center justify-center shadow-lg">
+                      <svg className="w-3 h-3 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="text-slate-900 dark:text-slate-100 font-bold text-sm">Gauchos of the Pampa</p>
+                  <p className="text-slate-500 dark:text-slate-400 text-xs mt-0.5">Entrevista · YouTube</p>
+                  <div className="flex items-center gap-1.5 mt-2">
+                    <span className="px-2 py-0.5 rounded-full bg-red-50 dark:bg-red-900/20 text-red-500 dark:text-red-400 text-[10px] font-bold uppercase tracking-wider">YouTube</span>
+                    <span className="px-2 py-0.5 rounded-full bg-purple-50 dark:bg-purple-900/20 text-purple-500 dark:text-purple-400 text-[10px] font-bold uppercase tracking-wider">Sonido directo</span>
+                  </div>
+                </div>
+                <ExternalLink className="w-4 h-4 text-slate-300 dark:text-slate-600 group-hover/link:text-purple-500 transition-colors shrink-0" />
+              </a>
+
+              {/* Placeholder más entrevistas */}
+              <div className="flex-1 flex items-center justify-center px-4 py-5 rounded-2xl border border-dashed border-slate-200 dark:border-slate-800 group hover:border-purple-300 dark:hover:border-purple-700/50 hover:bg-purple-50/50 dark:hover:bg-purple-900/10 transition-all duration-500 cursor-default">
+                <p className="text-slate-400 dark:text-slate-600 text-xs italic text-center font-medium group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-500">Más entrevistas próximamente <span className="inline-block transition-transform duration-500 group-hover:translate-x-1">→</span></p>
+              </div>
             </div>
           </div>
         </div>
@@ -641,7 +690,7 @@ const BentoGrid = () => {
                 <div className="relative pl-6 border-l border-slate-200 dark:border-slate-800">
                   <div className="absolute left-[-5px] top-1.5 w-2.5 h-2.5 rounded-full bg-indigo-600 dark:bg-indigo-400"></div>
                   <h4 className="font-bold text-slate-800 dark:text-slate-200">Iniciación en Programación con Python</h4>
-                  <p className="text-indigo-600 dark:text-indigo-400 text-sm font-medium">Talento Tech | (En curso)</p>
+                  <p className="text-indigo-600 dark:text-indigo-400 text-sm font-medium">Talento Tech | Abril a Agosto 2026</p>
                 </div>
                 
                 <div className="relative pl-6 border-l border-slate-200 dark:border-slate-800">
